@@ -18,4 +18,3 @@ after_success:
   - docker push tbiddu/multi-nginx
   - docker push tbiddu/multi-server
   - docker push tbiddu/multi-worker
-  
