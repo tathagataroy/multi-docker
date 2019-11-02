@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t tbiddu/react-test -f /client/Dockerfile.dev /client
+  - docker build -t tbiddu/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true tbiddu/react-test npm test
