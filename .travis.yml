@@ -3,19 +3,19 @@ services:
   - docker
 
 before_install:
-  - docker build -t tbiddu:/multi-docker:latest -f ./client/Dcokerfile.dev ./client
+  - docker build -t tbiddu/multi-docker:latest -f ./client/Dcokerfile.dev ./client
 
 script:
-  - docker run -e CI=true tbiddu:/multi-docker npm test
+  - docker run -e CI=true tbiddu/multi-docker npm test
 
 after_success:
-  - docker build -t tbiddu:/multi-client ./client
-  - docker build -t tbiddu:/multi-nginx ./nginx
-  - docker build -t tbiddu:/multi-server ./server
-  - docker build -t tbiddu:/multi-worker ./worker
+  - docker build -t tbiddu/multi-client ./client
+  - docker build -t tbiddu/multi-nginx ./nginx
+  - docker build -t tbiddu/multi-server ./server
+  - docker build -t tbiddu/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push tbiddu:/multi-client
-  - docker push tbiddu:/multi-nginx
-  - docker push tbiddu:/multi-server
-  - docker push tbiddu:/multi-worker
+  - docker push tbiddu/multi-client
+  - docker push tbiddu/multi-nginx
+  - docker push tbiddu/multi-server
+  - docker push tbiddu/multi-worker
   
